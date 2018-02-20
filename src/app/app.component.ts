@@ -12,6 +12,7 @@ export class AppComponent {
   age: number;
   found: boolean;
   personProfile = [];
+  allProfiles = [];
 
   constructor(private httpClient: HttpClient) {}
 
@@ -33,19 +34,6 @@ export class AppComponent {
       );
   } // end of getProfile()
 
-  // postProfile() {
-  //   this.httpClient.post('http://localhost:4002/profiles/',
-  //   {
-  //     name: 'mark',
-  //     age: 41
-  //   })
-  //   .subscribe(
-  //     (data: any) => {
-  //       console.log(data);
-  //     }
-  //   );
-  // }
-
   postProfile(nameToAdd, ageToAdd) {
     this.httpClient.post('http://localhost:4002/profiles',
     {
@@ -53,8 +41,22 @@ export class AppComponent {
       age: ageToAdd
     })
     .subscribe(
-      (data: any) => console.log(data)
+      (data: any) => {
+        console.log(data);
+        this.onGetAllProfiles();
+      }
     );
-  }
+
+  } // end of postProfile
+
+  onGetAllProfiles() {
+    this.httpClient.get('http://localhost:4002/profiles')
+    .subscribe(
+      (data: any[]) => {
+        console.log(data);
+        this.allProfiles = data;
+      }
+    );
+  } // end of onGetAllProfiles();
 
 }
