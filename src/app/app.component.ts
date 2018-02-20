@@ -31,6 +31,30 @@ export class AppComponent {
           }
         }
       );
+  } // end of getProfile()
+
+  // postProfile() {
+  //   this.httpClient.post('http://localhost:4002/profiles/',
+  //   {
+  //     name: 'mark',
+  //     age: 41
+  //   })
+  //   .subscribe(
+  //     (data: any) => {
+  //       console.log(data);
+  //     }
+  //   );
+  // }
+
+  postProfile(nameToAdd, ageToAdd) {
+    this.httpClient.post('http://localhost:4002/profiles',
+    {
+      name: nameToAdd,
+      age: ageToAdd
+    })
+    .subscribe(
+      (data: any) => console.log(data)
+    );
   }
 
 }

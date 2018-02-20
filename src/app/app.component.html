@@ -2,6 +2,16 @@
 <input type="text" (keyup)="onNameKeyUp($event)">
 <button (click)="getProfile()">Get Profile</button>
 <br>
-<p *ngIf="found" >
+<!-- <p *ngIf="found" >
   {{personProfile.name}} is {{personProfile.age}} old
-</p>
+</p> -->
+
+<hr>
+
+
+  <label for="name">Name</label>
+  <input type="text" id="name" [(ngModel)]="nameToAdd">
+  <label for="age">Age</label>
+  <input type="text" id="age"  [(ngModel)]="ageToAdd">
+  <button (click)="postProfile(nameToAdd, ageToAdd)">Add Profile</button>
+
